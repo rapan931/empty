@@ -13,20 +13,24 @@ var (
 )
 
 func main() {
+	os.Exit(search())
+}
+
+func search() int {
 	flag.Parse()
-	searchPath := "."
+	dirPath := "."
 
 	if flag.NArg() > 0 {
-		searchPath = flag.Arg(0)
+		dirPath = flag.Arg(0)
 
-		_, err := ioutil.ReadDir(searchPath)
+		_, err := ioutil.ReadDir(dirPath)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "[ERROR] %v\n", err)
-			os.Exit(1)
+			return 1
 		}
 	}
 
-	err := filepath.Walk(searchPath, func(path string, fileInfo os.FileInfo, err error) error {
+	err := filepath.Walk(dirPath, func(path string, fileInfo os.FileInfo, err error) error {
 		if *file {
 			if fileInfo.IsDir() {
 				return nil
@@ -56,6 +60,7 @@ func main() {
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "[ERROR] %v\n", err)
-		os.Exit(1)
+		return 1
 	}
+	return 0
 }
