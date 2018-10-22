@@ -54,7 +54,7 @@ func search() int {
 			}
 		}
 
-		fmt.Println(path)
+		fmt.Fprintln(os.Stdout, path)
 		return nil
 	})
 
