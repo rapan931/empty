@@ -9,7 +9,8 @@ import (
 )
 
 var (
-	file = flag.Bool("f", false, "File only")
+	file     = flag.Bool("f", false, "Search file")
+	absolute = flag.Bool("a", false, "Print absolute path")
 )
 
 func main() {
@@ -21,7 +22,7 @@ func search() int {
 	dirPath := "."
 
 	if flag.NArg() > 0 {
-		dirPath = flag.Arg(0)
+		dirPath = filepath.Clean(flag.Arg(0))
 
 		_, err := ioutil.ReadDir(dirPath)
 		if err != nil {
@@ -52,6 +53,15 @@ func search() int {
 			if len(files) != 0 {
 				return nil
 			}
+		}
+
+		if *absolute {
+			absPath, err := filepath.Abs(path)
+
+			if err != nil {
+				return err
+			}
+			path = absPath
 		}
 
 		fmt.Fprintln(os.Stdout, path)
