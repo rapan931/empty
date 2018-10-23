@@ -39,7 +39,6 @@ func TestSearch_EmptyFiles(t *testing.T) {
 
 	if outStr != expectedStr {
 		t.Errorf("Unexpected output: %s", outStr)
-		os.Args = oldArgs
 	}
 
 	os.Args = oldArgs
@@ -73,7 +72,6 @@ func TestSearch_EmptyFilesPrintAbsolutePath(t *testing.T) {
 
 	if outStr != expectedStr {
 		t.Errorf("Unexpected output: %s", outStr)
-		os.Args = oldArgs
 	}
 
 	os.Args = oldArgs
