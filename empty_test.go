@@ -124,7 +124,7 @@ func TestSearch_EmptyFilesIgnoreDirectory(t *testing.T) {
 
 	expectedStr := strings.Join(excludeNotEmptyDirEmptyFiles, "\n") + "\n"
 
-	if outStr != expectedStr {
+	if outStr == expectedStr {
 		t.Logf("Expected output: %s", expectedStr)
 		t.Errorf("Unexpected output: %s", outStr)
 	}
