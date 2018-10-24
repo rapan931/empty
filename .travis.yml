@@ -1,0 +1,9 @@
+language: go
+
+go:
+    - 1.9.1
+    - master
+
+script:
+    - go get github.com/kami-zh/go-capturer
+    - go test
