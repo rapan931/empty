@@ -68,9 +68,9 @@ func TestSearch_EmptyFiles(t *testing.T) {
 	}
 
 	expectedStr := strings.Join(emptyFiles, "\n") + "\n"
-	t.Logf("Expected output: %s", expectedStr)
 
 	if outStr != expectedStr {
+		t.Logf("Expected output: %s", expectedStr)
 		t.Errorf("Unexpected output: %s", outStr)
 	}
 
@@ -99,9 +99,9 @@ func TestSearch_EmptyFilesPrintAbsolutePath(t *testing.T) {
 		}
 		expectedStr = expectedStr + absPath + "\n"
 	}
-	t.Logf("Expected output: %s", expectedStr)
 
 	if outStr != expectedStr {
+		t.Logf("Expected output: %s", expectedStr)
 		t.Errorf("Unexpected output: %s", outStr)
 	}
 
@@ -123,9 +123,9 @@ func TestSearch_EmptyFilesIgnoreDirectory(t *testing.T) {
 	}
 
 	expectedStr := strings.Join(excludeNotEmptyDirEmptyFiles, "\n") + "\n"
-	t.Logf("Expected output: %s", expectedStr)
 
 	if outStr != expectedStr {
+		t.Logf("Expected output: %s", expectedStr)
 		t.Errorf("Unexpected output: %s", outStr)
 	}
 
